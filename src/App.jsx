@@ -1,21 +1,24 @@
 import './App.css'
 
-function Profile({name, age, isStudent}) {
-  return (
-    <>
-      <h2>{name}</h2>
-      <p>年齢：{age}</p>
-      <p>{isStudent ? '学生' : '社会人'}</p>
-    </>
-  )
-}
-
 function App() {
+  const products = [
+    { id: 1, name: 'ノートPC', price: 120000, category: 'PC'},
+    { id: 2, name: 'マウス', price: 3000, category: '周辺機器'},
+    { id: 3, name: 'キーボード', price: 8000, category: '周辺機器'},
+    { id: 4, name: 'タブレット', price: 50000, category: 'PC'},
+  ];
 
   return (
     <>
-      <Profile name="田中太郎" age={20} isStudent={true}/>
-      <Profile name="佐藤次郎" age={40} isStudent={false}/>
+      <ul>
+        {products
+          .filter((product) => product.category === 'PC')
+          .map((product) => (
+            <li key={product.id}>
+              {product.name}: \{product.price}
+            </li>
+        ))}
+      </ul>
     </>
   )
 }
